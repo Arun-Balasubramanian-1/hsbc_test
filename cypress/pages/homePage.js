@@ -5,7 +5,8 @@ class homePage {
         facebookFooterOption: () => cy.get(".social-row .social-icon-facebook"),
         twitterFooterOption: () => cy.get(".social-row .social-icon-twitter"),
         youtubeFooterOption: () => cy.get(".social-row .social-icon-youtube"),
-        hsbcIcon: () => cy.get(".header-logo img[alt='HSBC India Bank']")
+        hsbcIcon: () => cy.get(".header-logo img[alt='HSBC India Bank']"),
+        privacyLink: () => cy.get(".footer-bottom a:contains('Privacy Statement')")
     }
 
     clickfindNearestBranchOrAtm(){
@@ -30,6 +31,10 @@ class homePage {
 
     clickHSBCIcon(){
         this.elements.hsbcIcon().click();
+    }
+
+    clickPrivacyLink(){
+        this.elements.privacyLink().click();
     }
     
 }

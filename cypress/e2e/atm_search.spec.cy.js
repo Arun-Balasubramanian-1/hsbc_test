@@ -1,7 +1,7 @@
 import homePage from "../pages/homePage"
 import branchesPage from "../pages/branchesPage"
 import branchFinderPage from "../pages/branchFinderPage"
-
+import privacyStatementPage from "../pages/privacyStatementPage"
 
 describe('HSBC ATM Search spec', () => {
 
@@ -50,9 +50,13 @@ describe('HSBC ATM Search spec', () => {
         // step 16
         homePage.clickHSBCIcon()
         // step 17
+        cy.url().should('eql', 'https://www.hsbc.co.in/')
         // step 18
+        cy.scrollTo('bottom');
         // step 19
+        homePage.clickPrivacyLink();
         // step 20
+        privacyStatementPage.verifyPrivacyStatementHeader();
     })
 
 })
