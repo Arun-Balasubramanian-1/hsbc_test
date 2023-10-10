@@ -6,7 +6,9 @@ class homePage {
         twitterFooterOption: () => cy.get(".social-row .social-icon-twitter"),
         youtubeFooterOption: () => cy.get(".social-row .social-icon-youtube"),
         hsbcIcon: () => cy.get(".header-logo img[alt='HSBC India Bank']"),
-        privacyLink: () => cy.get(".footer-bottom a:contains('Privacy Statement')")
+        privacyLink: () => cy.get(".footer-bottom a:contains('Privacy Statement')"),
+        navigationTitle: (index) => cy.get(".header-main-navigation-title").eq(index),
+        logOnButton: () => cy.get(".header-top-meta .login-button")
     }
 
     clickfindNearestBranchOrAtm(){
@@ -35,6 +37,20 @@ class homePage {
 
     clickPrivacyLink(){
         this.elements.privacyLink().click();
+    }
+
+    verifyHSBCIconIsPresent(){
+        this.elements.hsbcIcon().should('exist');
+    }
+
+    verifyNavigationTitleText(index, expected_text){
+        this.elements.navigationTitle(index).invoke('text').then((titleText) => {
+            expect(titleText).to.eq(expected_text)
+        })
+    }
+
+    clickLoginOnButton(){
+        this.elements.logOnButton().click();
     }
     
 }

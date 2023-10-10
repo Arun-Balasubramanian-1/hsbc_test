@@ -2,8 +2,10 @@ import homePage from "../pages/homePage"
 import branchesPage from "../pages/branchesPage"
 import branchFinderPage from "../pages/branchFinderPage"
 import privacyStatementPage from "../pages/privacyStatementPage"
+import securityPage from "../pages/securityPage"
 
-describe('HSBC ATM Search spec', () => {
+
+describe('HSBC spec', () => {
 
     let hsbcData;
 
@@ -16,6 +18,33 @@ describe('HSBC ATM Search spec', () => {
     beforeEach(function() {
         // step 1
         cy.visit(hsbcData.Url);
+    })
+
+    it('HSBC Login Scenario', () => {
+        // step 2
+        homePage.verifyHSBCIconIsPresent()
+        // step 3
+        homePage.verifyNavigationTitleText(0, "Banking")
+        homePage.verifyNavigationTitleText(1, "Borrowing")
+        homePage.verifyNavigationTitleText(2, "Investing")
+        homePage.verifyNavigationTitleText(3, "NRI")
+        homePage.verifyNavigationTitleText(4, "Offers")
+        homePage.verifyNavigationTitleText(5, "Online Banking")
+        // step 4
+        homePage.clickLoginOnButton()
+        // step 5
+        securityPage.verifyLoginPageHeaderText("Log On")
+        // step 6
+        // step 7
+        // step 8
+        // step 9
+        // step 10
+        // step 11
+        // step 12
+        // step 13
+        // step 14
+        // step 15
+
     })
 
     it('ATM Search Scenario', () => {
@@ -58,5 +87,6 @@ describe('HSBC ATM Search spec', () => {
         // step 20
         privacyStatementPage.verifyPrivacyStatementHeader();
     })
+    
 
 })
