@@ -8,7 +8,9 @@ class homePage {
         hsbcIcon: () => cy.get(".header-logo img[alt='HSBC India Bank']"),
         privacyLink: () => cy.get(".footer-bottom a:contains('Privacy Statement')"),
         navigationTitle: (index) => cy.get(".header-main-navigation-title").eq(index),
-        logOnButton: () => cy.get(".header-top-meta .login-button")
+        logOnButton: () => cy.get(".header-top-meta .login-button"),
+        bankingNavigation: () => cy.get(".header-main-navigation-item span:contains('Banking')").eq(0),
+        creditCardLink: () => cy.get(".links-group h2:contains('Credit Cards')").eq(0)
     }
 
     clickfindNearestBranchOrAtm(){
@@ -51,6 +53,15 @@ class homePage {
 
     clickLoginOnButton(){
         this.elements.logOnButton().click();
+    }
+
+    hoverBankingNavigation(){
+        this.elements.bankingNavigation().trigger('mouseover')
+        this.elements.bankingNavigation().trigger('show')
+    }
+
+    clickCreditCardsLink(){
+        this.elements.creditCardLink().click({force: true})
     }
     
 }

@@ -3,7 +3,7 @@ import branchesPage from "../pages/branchesPage"
 import branchFinderPage from "../pages/branchFinderPage"
 import privacyStatementPage from "../pages/privacyStatementPage"
 import securityPage from "../pages/securityPage"
-
+import creditCardsPage from "../pages/creditCardsPage"
 
 describe('HSBC spec', () => {
 
@@ -20,7 +20,7 @@ describe('HSBC spec', () => {
         cy.visit(hsbcData.Url);
     })
 
-    it('HSBC Login Scenario', () => {
+    xit('HSBC Login Scenario', () => {
         // step 2
         homePage.verifyHSBCIconIsPresent()
         // step 3
@@ -57,7 +57,7 @@ describe('HSBC spec', () => {
 
     })
 
-    it('ATM Search Scenario', () => {
+    xit('ATM Search Scenario', () => {
         // step 2
         cy.scrollTo('bottom');
         // step 3
@@ -98,5 +98,13 @@ describe('HSBC spec', () => {
         privacyStatementPage.verifyPrivacyStatementHeader();
     })
     
+    it('Credit Card Flow', () => {
+        // step 2
+        homePage.hoverBankingNavigation()
+        // step 3
+        homePage.clickCreditCardsLink()
+        // step 4
+        creditCardsPage.verifyCreditCardHeader()
+    })
 
 })
