@@ -35,15 +35,25 @@ describe('HSBC spec', () => {
         // step 5
         securityPage.verifyLoginPageHeaderText("Log On")
         // step 6
+        securityPage.verifyContinueButtonIsPresent()
         // step 7
+        securityPage.verifyContinueButtonIsDisabled()
         // step 8
+        securityPage.typeEmailInLoginPage("arun@cypress.com")
         // step 9
+        securityPage.verifyContinueButtonIsEnabled()
         // step 10
+        securityPage.verifyRememberMeCheckboxIsNotChecked()
         // step 11
+        securityPage.verifyHelpIconExists()
         // step 12
+        securityPage.clickHelpIcon()
         // step 13
+        securityPage.verifyHelpContentHeaderText("Username")
         // step 14
+        securityPage.verifyClosePopupButtonExist()
         // step 15
+        securityPage.clickClosePopupButton()
 
     })
 
