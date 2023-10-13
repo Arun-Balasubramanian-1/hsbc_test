@@ -9,7 +9,7 @@ class homePage {
         privacyLink: () => cy.get(".footer-bottom a:contains('Privacy Statement')"),
         navigationTitle: (index) => cy.get(".header-main-navigation-title").eq(index),
         logOnButton: () => cy.get(".header-top-meta .login-button"),
-        bankingNavigation: () => cy.get(".header-main-navigation-item span:contains('Banking')").eq(0),
+        bankingNavigation: () => cy.get(".header-main .header-main-navigation-item").eq(0),
         creditCardLink: () => cy.get(".links-group h2:contains('Credit Cards')").eq(0)
     }
 
@@ -56,12 +56,12 @@ class homePage {
     }
 
     hoverBankingNavigation(){
-        this.elements.bankingNavigation().trigger('mouseover')
-        this.elements.bankingNavigation().trigger('show')
+        this.elements.bankingNavigation().trigger('mouseover', {force: true})
+        this.elements.creditCardLink().should('be.visible')
     }
 
     clickCreditCardsLink(){
-        this.elements.creditCardLink().click({force: true})
+        this.elements.creditCardLink().click()
     }
     
 }

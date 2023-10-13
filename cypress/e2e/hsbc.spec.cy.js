@@ -105,6 +105,24 @@ describe('HSBC spec', () => {
         homePage.clickCreditCardsLink()
         // step 4
         creditCardsPage.verifyCreditCardHeader()
+        // step 5
+        creditCardsPage.verifyApplyNowButtonExist()
+        // step 6
+        creditCardsPage.verifyCountOfCreditCardTypes(3)
+        // step 7
+        creditCardsPage.verifyCreditCardImageText(0, "HSBC Visa Cashback Credit Card")
+        // step 8
+        creditCardsPage.verifyCreditCardHeaderTitle(0, "HSBC Cashback Credit Card")
+        // step 9
+        creditCardsPage.verifyCreditCardCompareButton(0)
+        // step 10
+        creditCardsPage.verifyFindOutMoreAboutCreditCardButton(0)
+        // step 11
+        creditCardsPage.verifyApplyNowCreditCardButtonExist(0)
+        // step 12
+        creditCardsPage.clickCompareCreditCardsButton(0)
+        // step 13
+        creditCardsPage.verifyClosePopupButtonExist()
     })
 
 })
