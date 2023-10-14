@@ -1,5 +1,3 @@
-const { clickClosePopupButton } = require("./securityPage")
-
 class creditCardsPage{
     elements = {
         creditCardHeader: () => cy.get("#listing_intro_hero_banner_1 h1"),
@@ -10,7 +8,14 @@ class creditCardsPage{
         compareCreditCardsButtonWithPosition: (position) => cy.get(".productModule a[href='/credit-cards/compare/']").eq(position),
         findOutMoreCreditCardButtonWithPosition: (position) => cy.get(".productModule span:contains('Find out more')"),
         applyNowCreditCardButtonWithPosition: (position) => cy.get(".productModule span:contains('Apply now')"),
-        closePopupButton: () => cy.get(".modal-dialog .close-button")
+        closePopupButton: () => cy.get(".modal-dialog .close-button"),
+        compareCardsHeader: () => cy.get(".modal-dialog h2"),
+        compareCreditCardsTitle: () => cy.get(".modal-dialog .label-for-checkbox"),
+        compareCreditCardsCheckboxWithPosition: (position) => cy.get(".modal-dialog .modal-checkbox").eq(position),
+        compareCreditCardsPopupButton: () => cy.get(".modal-button span"),
+        selectedCreditCardImage: () => cy.get(".product-images-container img"),
+        removeCardLink: () => cy.get(".product-select-container .clear-icon"),
+        addCardLink: (position) => cy.get(".product-select-container .add-icon").eq(position)
     }
 
     verifyCreditCardHeader(){
@@ -50,11 +55,53 @@ class creditCardsPage{
     }
 
     clickCompareCreditCardsButton(position){
-        this.elements.compareCreditCardsButtonWithPosition(0).click()
+        this.elements.compareCreditCardsButtonWithPosition(position).click()
     }
 
     verifyClosePopupButtonExist(){
         this.elements.closePopupButton().should('exist')
+    }
+
+    verifyCompareCardsHeader(expected_text){
+        this.elements.compareCardsHeader().invoke('text').then((headerText) => {
+            expect(headerText.trim()).to.eq(expected_text)
+        })
+    }
+
+    verifyCountOfCompareCreditCards(expected_count){
+        this.elements.compareCreditCardsTitle().should('have.length', expected_count)
+    }
+
+    checkCompareCreditCardCheckbox(position){
+        this.elements.compareCreditCardsCheckboxWithPosition(position).click()
+    }
+
+    clickCompareCreditCardsPopupButton(){
+        this.elements.compareCreditCardsPopupButton().click()
+    }
+
+    verifyCountOfSelectedCreditCards(expected_count){
+        this.elements.selectedCreditCardImage().should('have.length', expected_count)
+    }
+
+    verifyCountOfRemoveCardLink(expected_count){
+        this.elements.removeCardLink().should('have.length', expected_count)
+    }
+
+    clickAddCardLink(position){
+        this.elements.addCardLink(position).click()
+    }
+
+    clickRemoveCardLink(position){
+        this.elements.removeCardLink().eq(position).click()
+    }
+    
+    clickClosePopupButton(){
+        this.elements.closePopupButton().click()
+    }
+
+    verifyPopupIsCLosed(){
+        this.elements.closePopupButton().should('not.be.visible')
     }
 }
 

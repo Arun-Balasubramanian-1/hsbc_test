@@ -20,7 +20,7 @@ describe('HSBC spec', () => {
         cy.visit(hsbcData.Url);
     })
 
-    xit('HSBC Login Scenario', () => {
+    it('HSBC Login Scenario', () => {
         // step 2
         homePage.verifyHSBCIconIsPresent()
         // step 3
@@ -57,7 +57,7 @@ describe('HSBC spec', () => {
 
     })
 
-    xit('ATM Search Scenario', () => {
+    it('ATM Search Scenario', () => {
         // step 2
         cy.scrollTo('bottom');
         // step 3
@@ -123,6 +123,38 @@ describe('HSBC spec', () => {
         creditCardsPage.clickCompareCreditCardsButton(0)
         // step 13
         creditCardsPage.verifyClosePopupButtonExist()
+        // step 14
+        creditCardsPage.verifyCompareCardsHeader("Select cards to compare")
+        // step 15
+        creditCardsPage.verifyCountOfCompareCreditCards(3)
+        // step 16
+        creditCardsPage.checkCompareCreditCardCheckbox(0)
+        creditCardsPage.checkCompareCreditCardCheckbox(1)
+        // step 17
+        creditCardsPage.clickCompareCreditCardsPopupButton()
+        // step 18
+        creditCardsPage.verifyCountOfSelectedCreditCards(2)
+        // step 19
+        creditCardsPage.verifyCountOfRemoveCardLink(2)
+        // step 20
+        creditCardsPage.clickAddCardLink(0)
+        // step 21
+        creditCardsPage.checkCompareCreditCardCheckbox(2)
+        creditCardsPage.clickCompareCreditCardsPopupButton()
+        // step 22
+        creditCardsPage.verifyCountOfSelectedCreditCards(3)
+        // step 23
+        creditCardsPage.verifyCountOfRemoveCardLink(3)
+        // step 24
+        creditCardsPage.clickRemoveCardLink(1)
+        // step 25
+        creditCardsPage.verifyCountOfSelectedCreditCards(2)
+        // step 26
+        creditCardsPage.clickAddCardLink(0)
+        // step 27
+        creditCardsPage.clickClosePopupButton()
+        // step 28
+        creditCardsPage.verifyPopupIsCLosed()
     })
 
 })

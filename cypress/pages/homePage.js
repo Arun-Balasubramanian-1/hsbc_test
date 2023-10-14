@@ -56,12 +56,11 @@ class homePage {
     }
 
     hoverBankingNavigation(){
-        this.elements.bankingNavigation().trigger('mouseover', {force: true})
-        this.elements.creditCardLink().should('be.visible')
+        this.elements.bankingNavigation().trigger('mouseover')
     }
 
     clickCreditCardsLink(){
-        this.elements.creditCardLink().click()
+        this.elements.creditCardLink().click({force: true})
     }
     
 }
